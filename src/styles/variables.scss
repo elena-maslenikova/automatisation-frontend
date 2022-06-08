@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+@import 'theme';
+
+$primary: mat.get-color-from-palette($automatisation-primary);
+$warn: mat.get-color-from-palette($automatisation-warn);
+
+$white: #ffffff;
+$light-gray: #dcdcdc;
+$lighter-gray: #f4f3f4;
+$background-gray: #fafafa;
+$guardsman-red: #c10000;
+$error: #d50000;

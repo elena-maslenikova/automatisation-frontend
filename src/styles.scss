@@ -2,5 +2,6 @@
 @import '~@angular/material/theming';
 @import './styles/theme.scss';
 @import './styles/shared.scss';
+@import './styles/variables.scss';
 
 @include angular-material-theme($automatisation-theme);
