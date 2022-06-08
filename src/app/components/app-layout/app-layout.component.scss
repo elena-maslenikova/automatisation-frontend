@@ -1,0 +1,12 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__body {
+    flex: 1 0 0%;
+    padding: 24px;
+    overflow-y: auto;
+  }
+}

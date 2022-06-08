@@ -1,0 +1,32 @@
+<h2>Входные данные</h2>
+<div class="description">
+  Ниже Вам предложено ответить на ряд вопросов, от ответов на которые будут зависеть на результат моделирования угроз
+</div>
+<mat-stepper orientation="vertical" linear #surveyStepper>
+  <mat-step [completed]="isFirstStepValid">
+    <ng-template matStepLabel>Тип и класс информационной системы</ng-template>
+    <app-is-survey (validityChanged)="isFirstStepValid = $event" (isSurveyResultChanged)="isSurveyResult = $event">
+    </app-is-survey>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary" [disabled]="!isFirstStepValid">Далее</button>
+    </div>
+  </mat-step>
+  <mat-step *ngIf="isSurveyResult?.isIspdn">
+    <ng-template matStepLabel>ИСПДн</ng-template>
+  </mat-step>
+  <mat-step *ngIf="isSurveyResult?.isGis">
+    <ng-template matStepLabel>ГИС</ng-template>
+  </mat-step>
+  <mat-step *ngIf="isSurveyResult?.isAsutp">
+    <ng-template matStepLabel>АСУТП</ng-template>
+  </mat-step>
+  <mat-step *ngIf="isSurveyResult?.isKii">
+    <ng-template matStepLabel>КИИ</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Общие вопросы</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Объекты</ng-template>
+  </mat-step>
+</mat-stepper>
