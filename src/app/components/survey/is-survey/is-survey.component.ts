@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ProtectionClasses, ProtectionLevels, SignificanceAttributes } from '@app/constants';
 import { IsSurvey } from '@app/models';
 import { atLeastOneValidator } from '@shared/validators/at-least-one.validator';
 import { distinctUntilChanged, merge, Subscription } from 'rxjs';
@@ -24,8 +25,12 @@ export class IsSurveyComponent implements OnInit, OnDestroy {
     classGis: new FormControl(),
     classAsutp: new FormControl(),
     classKii: new FormControl(),
-  })
+  });
   isTypesSelected: boolean = false;
+
+  protectionClasses = ProtectionClasses;
+  protectionLevels = ProtectionLevels;
+  significanceAttributes = SignificanceAttributes;
 
   private subscriptions: Subscription = new Subscription();
 

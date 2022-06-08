@@ -18,35 +18,33 @@
   <div *ngIf="typeFormGroup.get('isIspdn')?.value">
     <h4>ИС персональных данных (уровень защищенности)</h4>
     <mat-radio-group formControlName="classIspdn">
-      <mat-radio-button [value]="0">УЗ1</mat-radio-button>
-      <mat-radio-button [value]="1">УЗ2</mat-radio-button>
-      <mat-radio-button [value]="2">УЗ3</mat-radio-button>
-      <mat-radio-button [value]="3">УЗ4</mat-radio-button>
+      <mat-radio-button *ngFor="let level of protectionLevels" [value]="level.key">
+        {{level.value}}
+      </mat-radio-button>
     </mat-radio-group>
   </div>
   <div *ngIf="typeFormGroup.get('isGis')?.value">
     <h4>Государственная информационная система (класс защищенности)</h4>
     <mat-radio-group formControlName="classGis">
-      <mat-radio-button [value]="0">КЗ1</mat-radio-button>
-      <mat-radio-button [value]="1">КЗ2</mat-radio-button>
-      <mat-radio-button [value]="2">КЗ3</mat-radio-button>
+      <mat-radio-button *ngFor="let class of protectionClasses" [value]="class.key">
+        {{class.value}}
+      </mat-radio-button>
     </mat-radio-group>
   </div>
   <div *ngIf="typeFormGroup.get('isAsutp')?.value">
     <h4>Автоматизированная система управления технологическими процессами (класс защищенности)</h4>
     <mat-radio-group formControlName="classAsutp">
-      <mat-radio-button [value]="0">КЗ1</mat-radio-button>
-      <mat-radio-button [value]="1">КЗ2</mat-radio-button>
-      <mat-radio-button [value]="2">КЗ3</mat-radio-button>
+      <mat-radio-button *ngFor="let class of protectionClasses" [value]="class.key">
+        {{class.value}}
+      </mat-radio-button>
     </mat-radio-group>
   </div>
   <div *ngIf="typeFormGroup.get('isKii')?.value">
     <h4>Объект критической информационной инфраструктуры (критерий значимости)</h4>
     <mat-radio-group formControlName="classKii">
-      <mat-radio-button [value]="0">КЗ1</mat-radio-button>
-      <mat-radio-button [value]="1">КЗ2</mat-radio-button>
-      <mat-radio-button [value]="2">КЗ3</mat-radio-button>
-      <mat-radio-button [value]="3">Не значимый</mat-radio-button>
+      <mat-radio-button *ngFor="let attribute of significanceAttributes" [value]="attribute.key">
+        {{attribute.value}}
+      </mat-radio-button>
     </mat-radio-group>
   </div>
 </form>
