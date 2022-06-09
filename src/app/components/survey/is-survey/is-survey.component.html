@@ -13,8 +13,8 @@
     <a href="/">подготовленный опрос</a>
   </mat-error>
 </section>
-<form *ngIf="isTypesSelected" [formGroup]="classFormGroup" class="class-form">
-  <h3>К какому классу информационной системы она относится?</h3>
+<h3 *ngIf="isTypesSelected">К какому классу информационной системы она относится?</h3>
+<form [formGroup]="classFormGroup" class="class-form">
   <div *ngIf="typeFormGroup.get('isIspdn')?.value">
     <h4>ИС персональных данных (уровень защищенности)</h4>
     <mat-radio-group formControlName="classIspdn">

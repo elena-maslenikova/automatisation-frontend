@@ -9,21 +9,24 @@ import { AppComponent } from './app.component';
 import { AppLayoutComponent } from './components/app-layout/app-layout.component';
 import { SharedModule } from './shared/shared.module';
 import { SurveyComponent } from './components/survey/survey.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IsSurveyComponent } from './components/survey/is-survey/is-survey.component';
+import { IspdnSurveyComponent } from './components/survey/ispdn-survey/ispdn-survey.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLayoutComponent,
     SurveyComponent,
-    IsSurveyComponent
+    IsSurveyComponent,
+    IspdnSurveyComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     SharedModule
   ],
   providers: [

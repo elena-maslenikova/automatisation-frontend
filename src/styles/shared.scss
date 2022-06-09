@@ -14,10 +14,19 @@ h2 {
   color: $primary;
 }
 
-h2, h3 {
+h2:first-child, h3:first-child {
   margin-top: 0;
 }
 
 .hidden {
   visibility: hidden;
+}
+
+//Material override
+.mat-radio-group .mat-radio-button {
+  margin-right: 16px;
+}
+
+.mat-error {
+  padding-top: 16px;
 }

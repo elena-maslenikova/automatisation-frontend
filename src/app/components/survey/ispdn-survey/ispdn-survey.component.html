@@ -1,0 +1,20 @@
+<form [formGroup]="surveyForm">
+  <h3>Какие персональные данные обрабатываются в вашей системе (тут множественный выбор)?</h3>
+  <div *ngFor="let type of ispdnTypes">
+    <mat-checkbox [value]="type.key" (change)="onCheckboxChange(type.key)">{{type.value}}</mat-checkbox>
+  </div>
+  <h3>
+    Обрабатываются ли в вашей информационной системе персональные данные сотрудников органов государственной власти,
+    уполномоченных в области обеспечения обороны, безопасности и правопорядка, высших должностных лиц
+    государственных органов и других лиц государственных органов?
+  </h3>
+  <mat-radio-group formControlName="governmentPdn">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+  <h3>Обрабатываются ли персональные данные бухгалтерией?</h3>
+  <mat-radio-group formControlName="accounting">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+</form>
