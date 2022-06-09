@@ -13,15 +13,41 @@
   </mat-step>
   <mat-step *ngIf="isSurveyResult?.isIspdn">
     <ng-template matStepLabel>ИСПДн</ng-template>
+    <app-ispdn-survey (isSurveyResultChanged)="ispdnSurveyResult = $event"></app-ispdn-survey>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary" [disabled]="!ispdnSurveyResult?.pdnTypes?.length">
+        Далее
+      </button>
+    </div>
   </mat-step>
   <mat-step *ngIf="isSurveyResult?.isGis">
     <ng-template matStepLabel>ГИС</ng-template>
-  </mat-step>
-  <mat-step *ngIf="isSurveyResult?.isAsutp">
-    <ng-template matStepLabel>АСУТП</ng-template>
+    <h3>Каков масштабный вашей информационной системы?</h3>
+    <mat-radio-group [(ngModel)]="gisSize">
+      <div>
+        <mat-radio-button *ngFor="let size of gisSizes" [value]="size.key">
+          {{size.value}}
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary">
+        Далее
+      </button>
+    </div>
   </mat-step>
   <mat-step *ngIf="isSurveyResult?.isKii">
     <ng-template matStepLabel>КИИ</ng-template>
+    <h3>В какой сфере работает ваша организация?</h3>
+    <div *ngFor="let specification of kiiSpecifications">
+      <mat-checkbox [value]="specification.key" (change)="onCheckboxChange($event)">{{specification.value}}
+      </mat-checkbox>
+    </div>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary">
+        Далее
+      </button>
+    </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Общие вопросы</ng-template>
