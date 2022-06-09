@@ -12,6 +12,7 @@ import { SurveyComponent } from './components/survey/survey.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IsSurveyComponent } from './components/survey/is-survey/is-survey.component';
 import { IspdnSurveyComponent } from './components/survey/ispdn-survey/ispdn-survey.component';
+import { CommonSurveyComponent } from './components/survey/common-survey/common-survey.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { IspdnSurveyComponent } from './components/survey/ispdn-survey/ispdn-sur
     AppLayoutComponent,
     SurveyComponent,
     IsSurveyComponent,
-    IspdnSurveyComponent
+    IspdnSurveyComponent,
+    CommonSurveyComponent
   ],
   imports: [
     BrowserModule,

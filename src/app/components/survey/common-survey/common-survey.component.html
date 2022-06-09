@@ -1,0 +1,24 @@
+<form [formGroup]="surveyForm">
+  <h3>Организация является государственным учреждением или государственным органом?</h3>
+  <mat-radio-group formControlName="government">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+  <h3>Организация имеет собственные веб-ресурсы?</h3>
+  <mat-radio-group formControlName="webResources">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+  <ng-container *ngIf="surveyForm.controls['webResources'].value">
+    <h3>Есть публичные веб-ресурсы?</h3>
+    <mat-radio-group formControlName="publicWebResources">
+      <mat-radio-button [value]="true">Да</mat-radio-button>
+      <mat-radio-button [value]="false">Нет</mat-radio-button>
+    </mat-radio-group>
+  </ng-container>
+  <h3>Может ли организация оказывает влияние на общественное мнение, массовое сознание?</h3>
+  <mat-radio-group formControlName="publicPerception">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+</form>

@@ -51,6 +51,12 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Общие вопросы</ng-template>
+    <app-common-survey (isSurveyResultChanged)="commonSurveyResult = $event"></app-common-survey>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary">
+        Далее
+      </button>
+    </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Объекты</ng-template>

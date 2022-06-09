@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { GisSizes } from '@app/constants';
 import { KiiSpecifications } from '@app/constants/kii-specification.const';
-import { IsIspdnSurvey, IsSurvey } from '@app/models';
+import { CommonSurvey, IsIspdnSurvey, IsSurvey } from '@app/models';
 
 @Component({
   selector: 'app-survey',
@@ -13,6 +13,7 @@ export class SurveyComponent {
   isFirstStepValid: boolean = false;
   isSurveyResult!: IsSurvey;
   ispdnSurveyResult!: IsIspdnSurvey;
+  commonSurveyResult!: CommonSurvey;
 
   gisSizes = GisSizes;
   kiiSpecifications = KiiSpecifications;
