@@ -2,7 +2,9 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IspdnTypes } from '@app/constants';
 import { IsIspdnSurvey } from '@app/models';
-import { Subscription } from 'rxjs';
+import { SurveySelectors, UpdatePdnTypes } from '@app/store/survey';
+import { Select, Store } from '@ngxs/store';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ispdn-survey',
@@ -10,6 +12,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./ispdn-survey.component.scss']
 })
 export class IspdnSurveyComponent implements OnInit, OnDestroy {
+  @Select(SurveySelectors.pdnTypes) pdnTypes$: Observable<string[]>;
   @Output() isSurveyResultChanged: EventEmitter<IsIspdnSurvey> = new EventEmitter();
 
   surveyForm: FormGroup = this.formBuilder.group({
@@ -22,20 +25,32 @@ export class IspdnSurveyComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.surveyForm.valueChanges.subscribe((value) => {
-        const surveyResult: IsIspdnSurvey = {
-          pdnTypes: value.pdnTypes,
-          governmentPdn: value.governmentPdn,
-          accounting: value.accounting
-        };
+      this.pdnTypes$.subscribe((types) => {
+        this.surveyForm.patchValue(
+          { pdnTypes: types },
+          { emitEvent: false }
+        )
 
-        this.isSurveyResultChanged.emit(surveyResult);
+        this.isSurveyResultChanged.emit(this.getSurveyResult());
       })
+    );
+
+    this.subscriptions.add(
+      this.surveyForm.valueChanges.subscribe((value) => {
+        this.isSurveyResultChanged.emit(this.getSurveyResult());
+      })
+    );
+
+    this.subscriptions.add(
+      this.surveyForm.get('pdnTypes').valueChanges
+        .subscribe(types =>
+          this.store.dispatch(new UpdatePdnTypes(types)))
     );
   }
 
@@ -54,7 +69,18 @@ export class IspdnSurveyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-      this.subscriptions.unsubscribe();
+    this.subscriptions.unsubscribe();
+  }
+
+  private getSurveyResult(): IsIspdnSurvey {
+    const value = this.surveyForm.value;
+
+    const surveyResult: IsIspdnSurvey = {
+      pdnTypes: value.pdnTypes,
+      governmentPdn: value.governmentPdn,
+      accounting: value.accounting
+    };
+    return surveyResult;
   }
 
 }

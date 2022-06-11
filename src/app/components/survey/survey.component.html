@@ -5,13 +5,13 @@
 <mat-stepper orientation="vertical" linear #surveyStepper>
   <mat-step [completed]="isFirstStepValid">
     <ng-template matStepLabel>Тип и класс информационной системы</ng-template>
-    <app-is-survey (validityChanged)="isFirstStepValid = $event" (isSurveyResultChanged)="isSurveyResult = $event">
+    <app-is-survey (validityChanged)="isFirstStepValid = $event">
     </app-is-survey>
     <div class="button-next">
       <button mat-stroked-button matStepperNext color="primary" [disabled]="!isFirstStepValid">Далее</button>
     </div>
   </mat-step>
-  <mat-step *ngIf="isSurveyResult?.isIspdn">
+  <mat-step *ngIf="(isSurvey$ | async)?.isIspdn">
     <ng-template matStepLabel>ИСПДн</ng-template>
     <app-ispdn-survey (isSurveyResultChanged)="ispdnSurveyResult = $event"></app-ispdn-survey>
     <div class="button-next">
@@ -20,10 +20,10 @@
       </button>
     </div>
   </mat-step>
-  <mat-step *ngIf="isSurveyResult?.isGis">
+  <mat-step *ngIf="(isSurvey$ | async)?.isGis">
     <ng-template matStepLabel>ГИС</ng-template>
     <h3>Каков масштабный вашей информационной системы?</h3>
-    <mat-radio-group [(ngModel)]="gisSize">
+    <mat-radio-group [value]="gisSize$ | async" (change)="updateGisSize($event)">
       <div>
         <mat-radio-button *ngFor="let size of gisSizes" [value]="size.key">
           {{size.value}}
@@ -36,11 +36,12 @@
       </button>
     </div>
   </mat-step>
-  <mat-step *ngIf="isSurveyResult?.isKii">
+  <mat-step *ngIf="(isSurvey$ | async)?.isKii">
     <ng-template matStepLabel>КИИ</ng-template>
     <h3>В какой сфере работает ваша организация?</h3>
     <div *ngFor="let specification of kiiSpecifications">
-      <mat-checkbox [value]="specification.key" (change)="onCheckboxChange($event)">{{specification.value}}
+      <mat-checkbox [value]="specification.key" (change)="kiiSpecificationChange($event)">
+        {{specification.value}}
       </mat-checkbox>
     </div>
     <div class="button-next">
@@ -59,6 +60,6 @@
     </div>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Объекты</ng-template>
+    <ng-template matStepLabel>Типы объектов</ng-template>
   </mat-step>
 </mat-stepper>

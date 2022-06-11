@@ -2,8 +2,10 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ProtectionClasses, ProtectionLevels, SignificanceAttributes } from '@app/constants';
 import { IsSurvey } from '@app/models';
+import { SurveySelectors, UpdateSurvey } from '@app/store/survey';
+import { Select, Store } from '@ngxs/store';
 import { atLeastOneValidator } from '@shared/validators/at-least-one.validator';
-import { distinctUntilChanged, merge, Subscription } from 'rxjs';
+import { distinctUntilChanged, merge, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-is-survey',
@@ -11,8 +13,8 @@ import { distinctUntilChanged, merge, Subscription } from 'rxjs';
   styleUrls: ['./is-survey.component.scss']
 })
 export class IsSurveyComponent implements OnInit, OnDestroy {
+  @Select(SurveySelectors.isSurvey) isSurvey$: Observable<IsSurvey>;
   @Output() validityChanged: EventEmitter<boolean> = new EventEmitter();
-  @Output() isSurveyResultChanged: EventEmitter<IsSurvey> = new EventEmitter();
 
   typeFormGroup: FormGroup = this.formBuilder.group({
     isIspdn: new FormControl(),
@@ -35,10 +37,30 @@ export class IsSurveyComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
+    this.subscriptions.add(
+      this.isSurvey$.subscribe((isSurvey) => {
+        if (!isSurvey) return;
+
+        this.typeFormGroup.patchValue({
+          isIspdn: isSurvey.isIspdn,
+          isGis: isSurvey.isGis,
+          isAsutp: isSurvey.isAsutp,
+          isKii: isSurvey.isKii,
+        }, { emitEvent: false });
+        this.classFormGroup.patchValue({
+          classIspdn: isSurvey.classIspdn,
+          classGis: isSurvey.classGis,
+          classAsutp: isSurvey.classAsutp,
+          classKii: isSurvey.classKii,
+        }, { emitEvent: false })
+      })
+    );
+
     this.subscriptions.add(
       this.typeFormGroup.valueChanges
         .pipe(
@@ -58,7 +80,7 @@ export class IsSurveyComponent implements OnInit, OnDestroy {
         .pipe(
           distinctUntilChanged()
         )
-        .subscribe(() => this.isSurveyResultChanged.emit(this.updateSurvey()))
+        .subscribe(() => this.store.dispatch(new UpdateSurvey(this.getSurveyResult())))
     );
   }
 
@@ -66,7 +88,7 @@ export class IsSurveyComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  private updateSurvey(): IsSurvey {
+  private getSurveyResult(): IsSurvey {
     const types = this.typeFormGroup.value;
     const classes = this.classFormGroup.value;
 

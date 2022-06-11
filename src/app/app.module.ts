@@ -15,6 +15,7 @@ import { IspdnSurveyComponent } from './components/survey/ispdn-survey/ispdn-sur
 import { CommonSurveyComponent } from './components/survey/common-survey/common-survey.component';
 import { NgxsModule } from '@ngxs/store';
 import { ProgressBarState } from '@shared/store/progress-bar';
+import { SurveyState } from './store/survey';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProgressBarState } from '@shared/store/progress-bar';
     FormsModule,
     SharedModule,
     NgxsModule.forRoot([
-      ProgressBarState
+      ProgressBarState,
+      SurveyState
     ])
   ],
   providers: [
