@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ProgressBarService } from '@shared/services/progress-bar.service';
+import { Select } from '@ngxs/store';
+import { ProgressBarSelectors } from '@shared/store/progress-bar';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,11 +9,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app-layout.component.scss']
 })
 export class AppLayoutComponent {
-  requestCount$: Observable<number> = this.progressBarService.requestCountChanged;
+  @Select(ProgressBarSelectors.requestCount) requestCount$!: Observable<number>;
   isEditable = false;
-
-  constructor(
-    private progressBarService: ProgressBarService
-  ) { }
-
 }

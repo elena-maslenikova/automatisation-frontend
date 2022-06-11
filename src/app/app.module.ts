@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IsSurveyComponent } from './components/survey/is-survey/is-survey.component';
 import { IspdnSurveyComponent } from './components/survey/ispdn-survey/ispdn-survey.component';
 import { CommonSurveyComponent } from './components/survey/common-survey/common-survey.component';
+import { NgxsModule } from '@ngxs/store';
+import { ProgressBarState } from '@shared/store/progress-bar';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,13 @@ import { CommonSurveyComponent } from './components/survey/common-survey/common-
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgxsModule.forRoot([
+      ProgressBarState
+    ])
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ProgressBarInterceptor, multi: true },
