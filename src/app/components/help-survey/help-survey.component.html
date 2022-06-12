@@ -13,5 +13,13 @@
       <button mat-stroked-button matStepperNext color="primary">Далее</button>
     </div>
   </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>ГИС</ng-template>
+    <app-gis-help-survey>
+    </app-gis-help-survey>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary">Далее</button>
+    </div>
+  </mat-step>
 </mat-stepper>
-<a mat-stroked-button matStepperNext color="primary" routerLink="/survey">К вводу входных данных</a>
+<a mat-flat-button matStepperNext color="primary" routerLink="/survey">К вводу входных данных</a>

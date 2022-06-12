@@ -100,7 +100,7 @@ export class IspdnHelpSurveyComponent implements OnInit, OnDestroy {
     return 3;
   }
 
-  defineProtectionLevel(): ProtectionLevel {
+  private defineProtectionLevel(): ProtectionLevel {
     let level: ProtectionLevel = ProtectionLevel.UZ4;
     const formValue = this.surveyForm.value;
     if (formValue.pdnTypes.includes(this.ispdnType.SPECIAL)) {

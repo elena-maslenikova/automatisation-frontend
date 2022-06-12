@@ -18,6 +18,7 @@ import { ProgressBarState } from '@shared/store/progress-bar';
 import { SurveyState } from './store/survey';
 import { HelpSurveyComponent } from './components/help-survey/help-survey.component';
 import { IspdnHelpSurveyComponent } from './components/help-survey/ispdn-help-survey/ispdn-help-survey.component';
+import { GisHelpSurveyComponent } from './components/help-survey/gis-help-survey/gis-help-survey.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { IspdnHelpSurveyComponent } from './components/help-survey/ispdn-help-su
     IspdnSurveyComponent,
     CommonSurveyComponent,
     HelpSurveyComponent,
-    IspdnHelpSurveyComponent
+    IspdnHelpSurveyComponent,
+    GisHelpSurveyComponent
   ],
   imports: [
     BrowserModule,

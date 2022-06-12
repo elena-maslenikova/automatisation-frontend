@@ -1,0 +1,43 @@
+<form [formGroup]="surveyForm">
+  <h3>
+    Является ли ваша информационная система ГИС, т.е. отвечает следующим характеристикам:
+  </h3>
+  <ul>
+    <li>
+      система создана для реализации каких-либо положений или требований федеральных законов, законов субъектов РФ,
+      и (или) правовых актов государственных органов;
+    </li>
+    <li>
+      система создана для реализации полномочий органов государственной власти;
+    </li>
+    <li>если данная ИС находит в федеральном реестре ГИС;</li>
+    <li>создана на бюджетные деньги?</li>
+  </ul>
+  <mat-radio-group formControlName="isGis">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="surveyForm.controls['isGis'].value">
+    <h3>Каков масштабный вашей информационной системы?</h3>
+    <mat-radio-group formControlName="gisSize">
+      <div>
+        <mat-radio-button *ngFor="let size of gisSizes" [value]="size.key">
+          {{size.value}}
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+    <h3>
+      Какова возможная степень ущерба при нарушении конфиденциальности,
+      целостности, доступности информации в информационной системе?
+    </h3>
+    <mat-radio-group formControlName="significanceLevel">
+      <div>
+        <mat-radio-button *ngFor="let level of dataSignificanceLevels" [value]="level.key">
+          {{level.value}}
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+    <h3>Ваш тип ИС: ГИС</h3>
+    <h3 *ngIf="(isSurvey$ | async)?.classGis">Ваш класс защищенности: {{(isSurvey$ | async).classGis[1]}}</h3>
+  </div>
+</form>
