@@ -1,0 +1,24 @@
+<form [formGroup]="surveyForm">
+  <h3>
+    Используется ли для обработки информации автоматизированная система управления производственными и технологическими процессами?
+  </h3>
+  <mat-radio-group formControlName="isAsutp">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="surveyForm.controls['isAsutp'].value">
+    <h3>
+      Какова возможная степень ущерба при нарушении конфиденциальности,
+      целостности, доступности информации в информационной системе?
+    </h3>
+    <mat-radio-group formControlName="significanceLevel">
+      <div>
+        <mat-radio-button *ngFor="let level of dataSignificanceLevels" [value]="level.key">
+          {{level.value}}
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+    <h3>Ваш тип ИС: АСУТП</h3>
+    <h3 *ngIf="(isSurvey$ | async)?.classAsutp">Ваш класс защищенности: {{(isSurvey$ | async).classAsutp[1]}}</h3>
+  </div>
+</form>

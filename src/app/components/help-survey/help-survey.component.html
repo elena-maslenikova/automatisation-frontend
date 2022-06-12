@@ -4,7 +4,7 @@
   </a>
   <h2>Определение типа и класса ИС</h2>
 </div>
-<mat-stepper orientation="vertical" linear #helpSurveyStepper>
+<mat-stepper orientation="vertical" #helpSurveyStepper>
   <mat-step>
     <ng-template matStepLabel>ИСПДн</ng-template>
     <app-ispdn-help-survey>
@@ -17,6 +17,14 @@
     <ng-template matStepLabel>ГИС</ng-template>
     <app-gis-help-survey>
     </app-gis-help-survey>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary">Далее</button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>АСУТП</ng-template>
+    <app-asutp-help-survey>
+    </app-asutp-help-survey>
     <div class="button-next">
       <button mat-stroked-button matStepperNext color="primary">Далее</button>
     </div>

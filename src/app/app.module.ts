@@ -19,6 +19,7 @@ import { SurveyState } from './store/survey';
 import { HelpSurveyComponent } from './components/help-survey/help-survey.component';
 import { IspdnHelpSurveyComponent } from './components/help-survey/ispdn-help-survey/ispdn-help-survey.component';
 import { GisHelpSurveyComponent } from './components/help-survey/gis-help-survey/gis-help-survey.component';
+import { AsutpHelpSurveyComponent } from './components/help-survey/asutp-help-survey/asutp-help-survey.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GisHelpSurveyComponent } from './components/help-survey/gis-help-survey
     CommonSurveyComponent,
     HelpSurveyComponent,
     IspdnHelpSurveyComponent,
-    GisHelpSurveyComponent
+    GisHelpSurveyComponent,
+    AsutpHelpSurveyComponent
   ],
   imports: [
     BrowserModule,
