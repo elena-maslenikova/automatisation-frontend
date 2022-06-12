@@ -1,0 +1,17 @@
+<div class="header">
+  <a mat-icon-button color="primary" routerLink="/survey">
+    <mat-icon>arrow_back</mat-icon>
+  </a>
+  <h2>Определение типа и класса ИС</h2>
+</div>
+<mat-stepper orientation="vertical" linear #helpSurveyStepper>
+  <mat-step>
+    <ng-template matStepLabel>ИСПДн</ng-template>
+    <app-ispdn-help-survey>
+    </app-ispdn-help-survey>
+    <div class="button-next">
+      <button mat-stroked-button matStepperNext color="primary">Далее</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+<a mat-stroked-button matStepperNext color="primary" routerLink="/survey">К вводу входных данных</a>

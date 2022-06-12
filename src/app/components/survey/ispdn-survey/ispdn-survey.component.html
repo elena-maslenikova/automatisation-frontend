@@ -1,7 +1,9 @@
 <form [formGroup]="surveyForm">
   <h3>Какие персональные данные обрабатываются в вашей системе (тут множественный выбор)?</h3>
   <div *ngFor="let type of ispdnTypes">
-    <mat-checkbox [value]="type.key" (change)="onCheckboxChange(type.key)">{{type.value}}</mat-checkbox>
+    <mat-checkbox [value]="type.key" [checked]="surveyForm.controls['pdnTypes'].value.includes(type.key)"
+      (change)="onCheckboxChange(type.key)">
+      {{type.value}}</mat-checkbox>
   </div>
   <h3>
     Обрабатываются ли в вашей информационной системе персональные данные сотрудников органов государственной власти,

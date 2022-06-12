@@ -57,7 +57,10 @@ export class IsSurveyComponent implements OnInit, OnDestroy {
           classGis: isSurvey.classGis,
           classAsutp: isSurvey.classAsutp,
           classKii: isSurvey.classKii,
-        }, { emitEvent: false })
+        }, { emitEvent: false });
+
+        this.isTypesSelected = isSurvey.isIspdn || isSurvey.isGis || isSurvey.isAsutp || isSurvey.isKii;
+        this.validityChanged.emit(this.isTypesSelected);
       })
     );
 

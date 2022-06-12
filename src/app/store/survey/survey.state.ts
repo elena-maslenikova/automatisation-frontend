@@ -4,7 +4,16 @@ import { SurveyStateModel } from './survey-state.model';
 import { UpdateGisSize, UpdateKiiSpecification, UpdatePdnTypes, UpdateSurvey } from './survey.actions';
 
 const defaults: SurveyStateModel = {
-  isSurvey: null,
+  isSurvey: {
+    isIspdn: null,
+    isGis: null,
+    isAsutp: null,
+    isKii: null,
+    classIspdn: null,
+    classGis: null,
+    classAsutp: null,
+    classKii: null
+  },
   pdnTypes: null,
   gisSize: null,
   kiiSpecification: null

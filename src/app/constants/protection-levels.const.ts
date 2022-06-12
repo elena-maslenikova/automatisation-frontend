@@ -1,8 +1,9 @@
 import { KeyValue } from "@shared/models";
+import { ProtectionLevel } from "./protection-level.enum";
 
 export const ProtectionLevels: KeyValue[] = [
-  { key: 'UZ1', value: 'УЗ1' },
-  { key: 'UZ2', value: 'УЗ2' },
-  { key: 'UZ3', value: 'УЗ3' },
-  { key: 'UZ4', value: 'УЗ4' },
+  { key: ProtectionLevel.UZ1, value: 'УЗ1' },
+  { key: ProtectionLevel.UZ2, value: 'УЗ2' },
+  { key: ProtectionLevel.UZ3, value: 'УЗ3' },
+  { key: ProtectionLevel.UZ4, value: 'УЗ4' },
 ];

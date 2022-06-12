@@ -1,0 +1,97 @@
+<form [formGroup]="surveyForm">
+  <h3>
+    В вашей системе обрабатываются персональные данные физических лиц (клиентов или сотрудников)?
+  </h3>
+  <mat-radio-group formControlName="isIspdn">
+    <mat-radio-button [value]="true">Да</mat-radio-button>
+    <mat-radio-button [value]="false">Нет</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="surveyForm.controls['isIspdn'].value">
+    <h3>Какие персональные данные обрабатываются в вашей системе (тут множественный выбор)?</h3>
+    <div *ngFor="let type of ispdnTypes">
+      <mat-checkbox [value]="type.key" (change)="onCheckboxChange(type.key)">{{type.value}}</mat-checkbox>
+    </div>
+    <h3>Есть ли у вас сертификат по оценке уровня доверия на прикладное ПО?</h3>
+    <mat-radio-group formControlName="po">
+      <mat-radio-button [value]="true">Да</mat-radio-button>
+      <mat-radio-button [value]="false">Нет</mat-radio-button>
+    </mat-radio-group>
+    <div *ngIf="surveyForm.controls['po'].value === false" class="sub-block">
+      <h3>Доверяете ли вы своему прикладному ПО?</h3>
+      <mat-radio-group formControlName="trustPo">
+        <mat-radio-button [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <h3>Есть ли у вас сертификат по оценке уровня доверия на системное ПО?</h3>
+    <mat-radio-group formControlName="systemPo">
+      <mat-radio-button [value]="true">Да</mat-radio-button>
+      <mat-radio-button [value]="false">Нет</mat-radio-button>
+    </mat-radio-group>
+    <div *ngIf="surveyForm.controls['systemPo'].value === false" class="sub-block">
+      <h3>Доверяете ли вы своему системному ПО?</h3>
+      <mat-radio-group formControlName="trustSystemPo">
+        <mat-radio-button [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div *ngIf="surveyForm.controls['pdnTypes']?.value?.includes(ispdnType.SPECIAL)">
+      <h3>Обрабатываете ли вы специальные ПДн клиентов?</h3>
+      <mat-radio-group formControlName="specialClientPdn">
+        <mat-radio-button [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="surveyForm.controls['specialClientPdn'].value" class="sub-block">
+        <h3>Вы обрабатываете специальные ПДн более 100 000 клиентов?</h3>
+        <mat-radio-group formControlName="lotsSpecialClientPdn">
+          <mat-radio-button [value]="true">Да</mat-radio-button>
+          <mat-radio-button [value]="false">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div *ngIf="surveyForm.controls['pdnTypes']?.value?.includes(ispdnType.BIOMETRIC)">
+      <h3>Обрабатываете ли вы биометрические ПДн клиентов?</h3>
+      <mat-radio-group formControlName="biometricClientPdn">
+        <mat-radio-button [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="surveyForm.controls['biometricClientPdn'].value" class="sub-block">
+        <h3>Вы обрабатываете биометрические ПДн более 100 000 клиентов?</h3>
+        <mat-radio-group formControlName="lotsBiometricClientPdn">
+          <mat-radio-button [value]="true">Да</mat-radio-button>
+          <mat-radio-button [value]="false">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div *ngIf="surveyForm.controls['pdnTypes']?.value?.includes(ispdnType.OTHER)">
+      <h3>Обрабатываете ли вы иные ПДн клиентов?</h3>
+      <mat-radio-group formControlName="otherClientPdn">
+        <mat-radio-button [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="surveyForm.controls['otherClientPdn'].value" class="sub-block">
+        <h3>Вы обрабатываете иные ПДн более 100 000 клиентов?</h3>
+        <mat-radio-group formControlName="lotsOtherClientPdn">
+          <mat-radio-button [value]="true">Да</mat-radio-button>
+          <mat-radio-button [value]="false">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div *ngIf="surveyForm.controls['pdnTypes']?.value?.includes(ispdnType.PUBLIC)">
+      <h3>Обрабатываете ли вы общедоступные ПДн клиентов?</h3>
+      <mat-radio-group formControlName="publicClientPdn">
+        <mat-radio-button [value]="true">Да</mat-radio-button>
+        <mat-radio-button [value]="false">Нет</mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="surveyForm.controls['publicClientPdn'].value" class="sub-block">
+        <h3>Вы обрабатываете общедоступные ПДн более 100 000 клиентов?</h3>
+        <mat-radio-group formControlName="lotsPublicClientPdn">
+          <mat-radio-button [value]="true">Да</mat-radio-button>
+          <mat-radio-button [value]="false">Нет</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <h3>Ваш тип ИС: ИСПДн</h3>
+    <h3 *ngIf="(isSurvey$ | async)?.classIspdn">Ваш уровень защищенности: {{(isSurvey$ | async).classIspdn[2]}}</h3>
+  </div>
+</form>

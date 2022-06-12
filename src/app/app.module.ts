@@ -16,6 +16,8 @@ import { CommonSurveyComponent } from './components/survey/common-survey/common-
 import { NgxsModule } from '@ngxs/store';
 import { ProgressBarState } from '@shared/store/progress-bar';
 import { SurveyState } from './store/survey';
+import { HelpSurveyComponent } from './components/help-survey/help-survey.component';
+import { IspdnHelpSurveyComponent } from './components/help-survey/ispdn-help-survey/ispdn-help-survey.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SurveyState } from './store/survey';
     SurveyComponent,
     IsSurveyComponent,
     IspdnSurveyComponent,
-    CommonSurveyComponent
+    CommonSurveyComponent,
+    HelpSurveyComponent,
+    IspdnHelpSurveyComponent
   ],
   imports: [
     BrowserModule,
