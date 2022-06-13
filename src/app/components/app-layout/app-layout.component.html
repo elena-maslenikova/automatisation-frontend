@@ -1,9 +1,7 @@
 <div class="app-container">
-  <div class="app-container__header">
-    <mat-progress-bar [class.hidden]="(requestCount$ | async) === (null || undefined || 0)" mode="indeterminate">
-    </mat-progress-bar>
-  </div>
-  <div class="app-container__body">
+  <mat-progress-bar [class.hidden]="(requestCount$ | async) === (null || undefined || 0)" mode="indeterminate">
+  </mat-progress-bar>
+  <div class="content">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -2,11 +2,16 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 24px;
   overflow: hidden;
+  box-sizing: border-box;
 
-  &__body {
+  .content {
     flex: 1 0 0%;
     padding: 24px;
     overflow-y: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(122 120 180 / 30%);
+    box-sizing: border-box;
   }
 }
