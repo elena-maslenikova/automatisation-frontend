@@ -23,5 +23,7 @@
     </mat-radio-group>
   </div>
   <h3 *ngIf="(isSurvey$ | async)?.isKii">Ваш тип ИС: КИИ</h3>
-  <h3 *ngIf="(isSurvey$ | async)?.classKii">Ваш критерий значимости: {{(isSurvey$ | async).classKii[2]}}</h3>
+  <h3 *ngIf="(isSurvey$ | async)?.classKii && (isSurvey$ | async)?.classKii !== 'INSIGNIFICANT'">
+    Ваш критерий значимости: {{(isSurvey$ | async).classKii[2]}}
+  </h3>
 </form>

@@ -4,4 +4,5 @@ export const SignificanceAttributes: KeyValue[] = [
   { key: 'KZ1', value: 'КЗ1' },
   { key: 'KZ2', value: 'КЗ2' },
   { key: 'KZ3', value: 'КЗ3' },
+  { key: 'INSIGNIFICANT', value: 'Незначимый' },
 ];
