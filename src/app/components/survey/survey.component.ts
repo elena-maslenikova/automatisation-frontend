@@ -44,11 +44,9 @@ export class SurveyComponent implements OnInit, OnDestroy {
 
   kiiSpecificationChange(event: MatCheckboxChange) {
     if (event.checked) {
-      if (event.source.value !== 'unnessasary') {
         const newSpecification = [...this.kiiSpecification];
         newSpecification.push(event.source.value)
         this.kiiSpecification = newSpecification;
-      }
     } else {
       const index = this.kiiSpecification.indexOf(event.source.value);
       if (index !== -1) {

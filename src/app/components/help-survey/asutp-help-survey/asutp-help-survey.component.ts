@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { DataSignificanceLevel, DataSignificanceLevels, ProtectionClass } from '@app/constants';
 import { IsSurvey } from '@app/models';
@@ -11,7 +11,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './asutp-help-survey.component.html',
   styleUrls: ['./asutp-help-survey.component.scss']
 })
-export class AsutpHelpSurveyComponent implements OnInit {
+export class AsutpHelpSurveyComponent implements OnInit, OnDestroy {
   @Select(SurveySelectors.isSurvey) isSurvey$: Observable<IsSurvey>;
 
   surveyForm: FormGroup = this.formBuilder.group({
@@ -42,6 +42,10 @@ export class AsutpHelpSurveyComponent implements OnInit {
         this.store.dispatch(new UpdateSurvey(isSurvey));
       })
     );
+  }
+
+  ngOnDestroy(): void {
+      this.subscriptions.unsubscribe();
   }
 
   private defineProtectionClass(): ProtectionClass {

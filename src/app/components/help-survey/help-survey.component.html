@@ -29,5 +29,10 @@
       <button mat-stroked-button matStepperNext color="primary">Далее</button>
     </div>
   </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>КИИ</ng-template>
+    <app-kii-help-survey>
+    </app-kii-help-survey>
+  </mat-step>
 </mat-stepper>
 <a mat-flat-button matStepperNext color="primary" routerLink="/survey">К вводу входных данных</a>

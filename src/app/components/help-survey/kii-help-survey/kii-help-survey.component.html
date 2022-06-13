@@ -1,0 +1,27 @@
+<form [formGroup]="surveyForm">
+  <h3>В какой сфере работает ваша организация?</h3>
+  <div *ngFor="let specification of kiiSpecifications">
+    <mat-checkbox [value]="specification.key" (change)="kiiSpecificationChange($event)">
+      {{specification.value}}
+    </mat-checkbox>
+  </div>
+  <div>
+  </div>
+  <div *ngIf="surveyForm.controls['kiiSpecification']?.value?.length">
+    <h3>Являетесь ли вы объектом КИИ?</h3>
+    <mat-radio-group formControlName="isKii">
+      <mat-radio-button [value]="true">Да</mat-radio-button>
+      <mat-radio-button [value]="false">Нет</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div *ngIf="surveyForm.controls['isKii']?.value">
+    <h3>Какой критерий значимости присвоен вашему объекту КИИ?</h3>
+    <mat-radio-group formControlName="classKii">
+      <mat-radio-button *ngFor="let attribute of significanceAttributes" [value]="attribute.key">
+        {{attribute.value}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <h3 *ngIf="(isSurvey$ | async)?.isKii">Ваш тип ИС: КИИ</h3>
+  <h3 *ngIf="(isSurvey$ | async)?.classKii">Ваш критерий значимости: {{(isSurvey$ | async).classKii[2]}}</h3>
+</form>

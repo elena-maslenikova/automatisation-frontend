@@ -20,6 +20,7 @@ import { HelpSurveyComponent } from './components/help-survey/help-survey.compon
 import { IspdnHelpSurveyComponent } from './components/help-survey/ispdn-help-survey/ispdn-help-survey.component';
 import { GisHelpSurveyComponent } from './components/help-survey/gis-help-survey/gis-help-survey.component';
 import { AsutpHelpSurveyComponent } from './components/help-survey/asutp-help-survey/asutp-help-survey.component';
+import { KiiHelpSurveyComponent } from './components/help-survey/kii-help-survey/kii-help-survey.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AsutpHelpSurveyComponent } from './components/help-survey/asutp-help-su
     HelpSurveyComponent,
     IspdnHelpSurveyComponent,
     GisHelpSurveyComponent,
-    AsutpHelpSurveyComponent
+    AsutpHelpSurveyComponent,
+    KiiHelpSurveyComponent
   ],
   imports: [
     BrowserModule,

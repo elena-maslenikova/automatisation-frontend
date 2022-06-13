@@ -40,7 +40,8 @@
     <ng-template matStepLabel>КИИ</ng-template>
     <h3>В какой сфере работает ваша организация?</h3>
     <div *ngFor="let specification of kiiSpecifications">
-      <mat-checkbox [value]="specification.key" (change)="kiiSpecificationChange($event)">
+      <mat-checkbox [value]="specification.key" [checked]="kiiSpecification?.includes(specification.key)"
+        (change)="kiiSpecificationChange($event)">
         {{specification.value}}
       </mat-checkbox>
     </div>
