@@ -90,7 +90,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
     this.store.dispatch(new UpdateGisSize(event.value));
   }
 
-  toConsequences() {
+  getIsClasses() {
     const isSurvey = this.store.selectSnapshot(SurveySelectors.isSurvey);
 
     if (isSurvey.isIspdn) {
