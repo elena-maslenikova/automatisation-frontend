@@ -62,5 +62,12 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Типы объектов</ng-template>
+    <h3>Какие типы объектов присутствуют в ИС?</h3>
+    <div *ngFor="let assetType of (assetTypes$ | async)">
+      <mat-checkbox [value]="assetType.id.toString()" [checked]="(selectedAssetTypesIds$ | async)?.includes(assetType.id)"
+        (change)="assetTypesChange($event)">
+        {{assetType.name}}
+      </mat-checkbox>
+    </div>
   </mat-step>
 </mat-stepper>

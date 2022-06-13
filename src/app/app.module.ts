@@ -21,6 +21,8 @@ import { IspdnHelpSurveyComponent } from './components/help-survey/ispdn-help-su
 import { GisHelpSurveyComponent } from './components/help-survey/gis-help-survey/gis-help-survey.component';
 import { AsutpHelpSurveyComponent } from './components/help-survey/asutp-help-survey/asutp-help-survey.component';
 import { KiiHelpSurveyComponent } from './components/help-survey/kii-help-survey/kii-help-survey.component';
+import { AssetsState } from './store/assets';
+import { TokenInterceptor } from '@shared/interceptors/token/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,10 +48,12 @@ import { KiiHelpSurveyComponent } from './components/help-survey/kii-help-survey
     SharedModule,
     NgxsModule.forRoot([
       ProgressBarState,
-      SurveyState
+      SurveyState,
+      AssetsState
     ])
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ProgressBarInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
