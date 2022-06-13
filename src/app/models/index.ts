@@ -3,3 +3,7 @@ export * from './ispdn-survey.interface';
 export * from './common-survey.interface';
 export * from './asset-type.interface';
 export * from './asset.interface';
+export * from './ispdn-class.interface';
+export * from './gis-class.interface';
+export * from './asutp-class.interface';
+export * from './kii-class.interface';

@@ -1,5 +1,3 @@
-import { AssetType } from "@app/models";
-
 export class GetAssetTypes {
   static readonly type = '[Assets] Get Asset types';
 }

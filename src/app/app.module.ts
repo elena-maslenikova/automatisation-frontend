@@ -23,6 +23,7 @@ import { AsutpHelpSurveyComponent } from './components/help-survey/asutp-help-su
 import { KiiHelpSurveyComponent } from './components/help-survey/kii-help-survey/kii-help-survey.component';
 import { AssetsState } from './store/assets';
 import { TokenInterceptor } from '@shared/interceptors/token/token.interceptor';
+import { ClassesState } from './store/classes';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { TokenInterceptor } from '@shared/interceptors/token/token.interceptor';
     NgxsModule.forRoot([
       ProgressBarState,
       SurveyState,
-      AssetsState
+      AssetsState,
+      ClassesState
     ])
   ],
   providers: [

@@ -9,3 +9,4 @@ export * from './ispdn-types.const';
 export * from './ispdn-type.enum';
 export * from './data-significance-levels.const';
 export * from './data-significance-level.enum';
+export * from './specifications.enum';
