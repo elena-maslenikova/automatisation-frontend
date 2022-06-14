@@ -14,7 +14,8 @@ h2 {
   color: $primary;
 }
 
-h2:first-child, h3:first-child {
+h2:first-child,
+h3:first-child {
   margin-top: 0;
 }
 
@@ -22,12 +23,17 @@ h2:first-child, h3:first-child {
   visibility: hidden;
 }
 
+.button-next {
+  padding-top: 24px;
+}
+
 //Material override
 .mat-radio-group .mat-radio-button {
   margin-right: 16px;
 }
 
-.mat-checkbox, .mat-radio-button {
+.mat-checkbox,
+.mat-radio-button {
   margin-bottom: 8px;
 }
 
@@ -35,6 +41,42 @@ h2:first-child, h3:first-child {
   padding-top: 16px;
 }
 
-.mat-checkbox-layout, .mat-radio-label {
+.mat-checkbox-layout,
+.mat-radio-label {
   white-space: normal !important;
+}
+
+.mat-row {
+  padding: 6px 0;
+  box-sizing: border-box;
+}
+
+.mat-header-cell.column-50,
+.mat-cell.column-50,
+.mat-footer-cell.column-50 {
+  flex: 0 0 50%;
+}
+
+.mat-header-cell.action,
+.mat-cell.action,
+.mat-footer-cell.action {
+  display: flex;
+  justify-content: end;
+}
+
+tr.mat-row,
+tr.mat-footer-row {
+  display: flex;
+  border-width: 0;
+  border-bottom-color: rgba(21, 28, 32, 0.12);
+  border-bottom-width: 1px;
+  border-style: solid;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border: none !important;
 }

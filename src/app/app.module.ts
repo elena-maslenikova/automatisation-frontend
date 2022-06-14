@@ -24,6 +24,7 @@ import { KiiHelpSurveyComponent } from './components/help-survey/kii-help-survey
 import { AssetsState } from './store/assets';
 import { TokenInterceptor } from '@shared/interceptors/token/token.interceptor';
 import { ClassesState } from './store/classes';
+import { AssetsComponent } from './components/assets/assets.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ClassesState } from './store/classes';
     IspdnHelpSurveyComponent,
     GisHelpSurveyComponent,
     AsutpHelpSurveyComponent,
-    KiiHelpSurveyComponent
+    KiiHelpSurveyComponent,
+    AssetsComponent
   ],
   imports: [
     BrowserModule,

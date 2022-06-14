@@ -1,0 +1,47 @@
+<div class="header">
+    <a mat-icon-button color="primary" routerLink="/survey">
+        <mat-icon>arrow_back</mat-icon>
+    </a>
+    <h2>Выбор объектов воздействия</h2>
+</div>
+<mat-table [dataSource]="selectedAssets">
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef class="column-50">
+            Объект
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="column-50">
+            {{row.name}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="typeName">
+        <mat-header-cell *matHeaderCellDef>
+            Тип объекта
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            {{row.asset_type_name}}
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef class="action">
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="action">
+            <button mat-icon-button color="warn" (click)="deleteAsset(row.id)">
+                <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns">
+    </mat-row>
+
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell">
+            Нет подходящих объектов
+        </td>
+    </tr>
+</mat-table>
+<mat-paginator [length]="assetsCount$ | async" pageSize="50" (page)="getPage($event)">
+</mat-paginator>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from './components/app-layout/app-layout.component';
+import { AssetsComponent } from './components/assets/assets.component';
 import { HelpSurveyComponent } from './components/help-survey/help-survey.component';
 import { SurveyComponent } from './components/survey/survey.component';
 
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'help-survey',
         component: HelpSurveyComponent
+      },
+      {
+        path: 'assets',
+        component: AssetsComponent,
       }
     ]
   },

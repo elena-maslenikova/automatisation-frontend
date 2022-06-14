@@ -18,4 +18,14 @@ export class AssetsSelectors {
   public static assets(state: AssetsStateModel): Asset[] {
     return state.assets?.results;
   }
+
+  @Selector([AssetsState])
+  public static assetsCount(state: AssetsStateModel): number {
+    return state.assets?.count;
+  }
+
+  @Selector([AssetsState])
+  public static selectedAssetsIds(state: AssetsStateModel): number[] {
+    return state.selectedAssetsIds
+  }
 }

@@ -90,7 +90,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
     this.store.dispatch(new UpdateGisSize(event.value));
   }
 
-  getIsClasses() {
+  completeSurvey() {
     const isSurvey = this.store.selectSnapshot(SurveySelectors.isSurvey);
 
     if (isSurvey.isIspdn) {
@@ -106,7 +106,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
       this.getKiiClasses();
     }
 
-    // this.router.navigate(['/consequences']);
+    this.router.navigate(['/assets']);
   }
 
   ngOnDestroy(): void {

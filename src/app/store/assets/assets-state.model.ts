@@ -3,7 +3,7 @@ import { PaginatedResponse } from "@shared/models";
 
 export interface AssetsStateModel {
   assets: PaginatedResponse<Asset>;
-  selectedAssets: Asset[];
+  selectedAssetsIds: number[];
   assetTypes: AssetType[];
   selectedAssetTypesIds: number[];
 }
