@@ -1,11 +1,12 @@
-<div class="header">
-    <a mat-icon-button color="primary" routerLink="/consequences">
+<div class="flex-center justify-between">
+    <a mat-button color="primary" routerLink="/consequences">
         <mat-icon>arrow_back</mat-icon>
+        Негативные последствия
     </a>
     <h2>Определение объектов воздействия</h2>
-    <div class="fill"></div>
-    <a mat-flat-button color="primary" href="/report">
-      Формирование отчета
+    <a mat-button color="primary" href="/report">
+        Отчет
+        <mat-icon>arrow_forward</mat-icon>
     </a>
 </div>
 <mat-table [dataSource]="selectedAssets">

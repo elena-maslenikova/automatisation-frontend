@@ -1,11 +1,12 @@
-<div class="header">
-  <a mat-icon-button color="primary" routerLink="/survey">
+<div class="flex-center justify-between">
+  <a mat-button color="primary" routerLink="/survey">
     <mat-icon>arrow_back</mat-icon>
+    Входные данные
   </a>
   <h2>Определение негативных последствий</h2>
-  <div class="fill"></div>
-  <button mat-flat-button color="primary" (click)="updateSelectedConsequences()">
-    Определение объектов воздействия
+  <button mat-button color="primary" (click)="updateSelectedConsequences()">
+    Объекты воздействия
+    <mat-icon>arrow_forward</mat-icon>
   </button>
 </div>
 <mat-table [dataSource]="consequenceList$ | async">
