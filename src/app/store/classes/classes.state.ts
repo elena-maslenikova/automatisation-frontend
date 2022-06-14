@@ -42,7 +42,7 @@ export class ClassesState {
     return this.classesService.getClassesIspdn(payload)
       .pipe(
         tap((result: PaginatedResponse<IspdnClass>) => {
-          ctx.patchState({ ispdnClasses: result.results });
+          ctx.patchState({ ispdnClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
@@ -59,7 +59,7 @@ export class ClassesState {
     return this.classesService.getIspdnConsequences(payload)
       .pipe(
         tap((result: PaginatedResponse<IspdnClass>) => {
-          ctx.patchState({ ispdnConsequencesClasses: result.results });
+          ctx.patchState({ ispdnConsequencesClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
@@ -76,7 +76,7 @@ export class ClassesState {
     return this.classesService.getClassesGis(payload)
       .pipe(
         tap((result: PaginatedResponse<GisClass>) => {
-          ctx.patchState({ gisClasses: result.results });
+          ctx.patchState({ gisClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
@@ -93,7 +93,7 @@ export class ClassesState {
     return this.classesService.getGisConsequences(payload)
       .pipe(
         tap((result: PaginatedResponse<GisClass>) => {
-          ctx.patchState({ gisConsequencesClasses: result.results });
+          ctx.patchState({ gisConsequencesClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
@@ -110,7 +110,7 @@ export class ClassesState {
     return this.classesService.getClassesAsutp(payload)
       .pipe(
         tap((result: PaginatedResponse<AsutpClass>) => {
-          ctx.patchState({ asutpClasses: result.results });
+          ctx.patchState({ asutpClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
@@ -127,7 +127,7 @@ export class ClassesState {
     return this.classesService.getAsutpConsequences(payload)
       .pipe(
         tap((result: PaginatedResponse<AsutpClass>) => {
-          ctx.patchState({ asutpConsequencesClasses: result.results });
+          ctx.patchState({ asutpConsequencesClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
@@ -144,7 +144,7 @@ export class ClassesState {
     return this.classesService.getClassesKii(payload)
       .pipe(
         tap((result: PaginatedResponse<KiiClass>) => {
-          ctx.patchState({ kiiClasses: result.results });
+          ctx.patchState({ kiiClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
@@ -161,7 +161,7 @@ export class ClassesState {
     return this.classesService.getKiiConsequences(payload)
       .pipe(
         tap((result: PaginatedResponse<KiiClass>) => {
-          ctx.patchState({ kiiConsequencesClasses: result.results });
+          ctx.patchState({ kiiConsequencesClasses: result.results.map(item => item.id) });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
