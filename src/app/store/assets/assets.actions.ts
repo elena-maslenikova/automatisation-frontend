@@ -3,7 +3,7 @@ export class GetAssetTypes {
 }
 
 export class UpdateSelectedAssetTypes {
-  static readonly type = '[Survey] Update Selected Asset types';
+  static readonly type = '[Assets] Update Selected Asset types';
 
   constructor(public payload: number[]) { };
 }
@@ -15,11 +15,11 @@ export class GetAssets {
 }
 
 export class GetSelectedAssets {
-  static readonly type = '[Survey] Get Selected Assets';
+  static readonly type = '[Assets] Get Selected Assets';
 }
 
 export class UpdateSelectedAssets {
-  static readonly type = '[Survey] Update Selected Assets';
+  static readonly type = '[Assets] Update Selected Assets';
 
   constructor(public payload: number[]) { };
 }

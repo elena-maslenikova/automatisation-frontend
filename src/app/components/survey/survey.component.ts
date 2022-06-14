@@ -106,7 +106,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
       this.getKiiClasses();
     }
 
-    this.router.navigate(['/assets']);
+    this.router.navigate(['/consequences']);
   }
 
   ngOnDestroy(): void {

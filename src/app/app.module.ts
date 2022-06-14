@@ -25,6 +25,8 @@ import { AssetsState } from './store/assets';
 import { TokenInterceptor } from '@shared/interceptors/token/token.interceptor';
 import { ClassesState } from './store/classes';
 import { AssetsComponent } from './components/assets/assets.component';
+import { ConsequencesComponent } from './components/consequences/consequences.component';
+import { ConsequencesState } from './store/consequences';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { AssetsComponent } from './components/assets/assets.component';
     GisHelpSurveyComponent,
     AsutpHelpSurveyComponent,
     KiiHelpSurveyComponent,
-    AssetsComponent
+    AssetsComponent,
+    ConsequencesComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { AssetsComponent } from './components/assets/assets.component';
       ProgressBarState,
       SurveyState,
       AssetsState,
-      ClassesState
+      ClassesState,
+      ConsequencesState
     ])
   ],
   providers: [

@@ -29,3 +29,9 @@ export class GetKiiConsequences {
 
   constructor(public payload: KiiClassRequest) {};
 }
+
+export class UpdateSelectedConsequences {
+  static readonly type = '[Consequences] Update Selected Consequences';
+
+  constructor(public payload: number[]) { };
+}

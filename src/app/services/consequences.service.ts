@@ -16,7 +16,7 @@ export class ConsequencesService {
   ) { }
 
   getConsequences(): Observable<PaginatedResponse<Consequence>> {
-    return this.http.get<PaginatedResponse<Consequence>>(`${environment.api}/negative_consequences`);
+    return this.http.get<PaginatedResponse<Consequence>>(`${environment.api}/negative-consequences`);
   }
 
   getIspdnConsequences(params: any): Observable<PaginatedResponse<IspdnClass>> {

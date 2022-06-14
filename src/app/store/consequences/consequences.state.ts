@@ -8,11 +8,13 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ConsequencesStateModel } from './consequences-state.model';
 import {
-  GetAsutpConsequences, GetConsequences, GetGisConsequences, GetIspdnConsequences, GetKiiConsequences,
+  GetAsutpConsequences, GetConsequences, GetGisConsequences,
+  GetIspdnConsequences, GetKiiConsequences, UpdateSelectedConsequences,
 } from './consequences.actions';
 
 const defaults: ConsequencesStateModel = {
   consequenceList: null,
+  selectedConsequencesIds: null,
   ispdnConsequencesIds: null,
   gisConsequencesIds: null,
   asutpConsequencesIds: null,
@@ -112,5 +114,13 @@ export class ConsequencesState {
           return throwError(() => new Error(err.error));
         })
       )
+  }
+
+  @Action(UpdateSelectedConsequences)
+  updateSelectedConsequences(
+    ctx: StateContext<ConsequencesStateModel>,
+    { payload }: UpdateSelectedConsequences
+  ): ConsequencesStateModel {
+    return ctx.patchState({ selectedConsequencesIds: payload });
   }
 }
