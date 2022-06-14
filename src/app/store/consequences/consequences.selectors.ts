@@ -10,6 +10,11 @@ export class ConsequencesSelectors {
   }
 
   @Selector([ConsequencesState])
+  public static selectedConsequencesIds(state: ConsequencesStateModel): number[] {
+    return state.selectedConsequencesIds;
+  }
+
+  @Selector([ConsequencesState])
   public static ispdnConsequencesIds(state: ConsequencesStateModel): number[] {
     return state.ispdnConsequencesIds;
   }

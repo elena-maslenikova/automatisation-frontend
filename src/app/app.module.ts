@@ -27,6 +27,7 @@ import { ClassesState } from './store/classes';
 import { AssetsComponent } from './components/assets/assets.component';
 import { ConsequencesComponent } from './components/consequences/consequences.component';
 import { ConsequencesState } from './store/consequences';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ConsequencesState } from './store/consequences';
     AsutpHelpSurveyComponent,
     KiiHelpSurveyComponent,
     AssetsComponent,
-    ConsequencesComponent
+    ConsequencesComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

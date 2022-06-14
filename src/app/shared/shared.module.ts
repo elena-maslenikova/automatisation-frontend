@@ -7,6 +7,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
@@ -25,6 +26,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatInputModule,
     MatButtonModule,
     MatRadioModule,
     MatTableModule,

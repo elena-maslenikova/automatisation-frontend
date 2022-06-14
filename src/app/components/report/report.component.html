@@ -1,0 +1,14 @@
+<div class="header">
+  <a mat-icon-button color="primary" routerLink="/assets">
+      <mat-icon>arrow_back</mat-icon>
+  </a>
+  <h2>Формирование отчета</h2>
+</div>
+<div>Последний шаг: для формирования отчета введите название вашей ИС</div>
+<mat-form-field appearance="standard">
+  <mat-label>Название ИС</mat-label>
+  <input matInput [(ngModel)]="isName">
+</mat-form-field>
+<div class="button-next">
+  <button mat-flat-button color="primary" [disabled]="!isName" (click)="buildReport()">Сформировать отчет</button>
+</div>

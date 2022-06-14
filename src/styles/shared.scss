@@ -27,6 +27,10 @@ h3:first-child {
   padding-top: 24px;
 }
 
+.fill {
+  flex: 1 0 0%;
+}
+
 //Material override
 .mat-radio-group .mat-radio-button {
   margin-right: 16px;

@@ -4,6 +4,7 @@ import { AppLayoutComponent } from './components/app-layout/app-layout.component
 import { AssetsComponent } from './components/assets/assets.component';
 import { ConsequencesComponent } from './components/consequences/consequences.component';
 import { HelpSurveyComponent } from './components/help-survey/help-survey.component';
+import { ReportComponent } from './components/report/report.component';
 import { SurveyComponent } from './components/survey/survey.component';
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'consequences',
         component: ConsequencesComponent,
+      },
+      {
+        path: 'report',
+        component: ReportComponent,
       },
     ]
   },

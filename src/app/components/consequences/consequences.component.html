@@ -1,8 +1,12 @@
 <div class="header">
   <a mat-icon-button color="primary" routerLink="/survey">
-      <mat-icon>arrow_back</mat-icon>
+    <mat-icon>arrow_back</mat-icon>
   </a>
   <h2>Определение негативных последствий</h2>
+  <div class="fill"></div>
+  <button mat-flat-button color="primary" (click)="updateSelectedConsequences()">
+    Определение объектов воздействия
+  </button>
 </div>
 <mat-table [dataSource]="consequenceList$ | async">
   <ng-container matColumnDef="select">
@@ -43,8 +47,3 @@
     </td>
   </tr>
 </mat-table>
-<div class="button-next">
-  <button mat-flat-button color="primary" (click)="updateSelectedConsequences()">
-    Определение объектов воздействия
-  </button>
-</div>
