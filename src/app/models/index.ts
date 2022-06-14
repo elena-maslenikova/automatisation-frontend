@@ -7,3 +7,4 @@ export * from './ispdn-class.interface';
 export * from './gis-class.interface';
 export * from './asutp-class.interface';
 export * from './kii-class.interface';
+export * from './consequence.interface';

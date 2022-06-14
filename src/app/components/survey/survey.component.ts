@@ -9,10 +9,10 @@ import {
   IsIspdnSurvey, IspdnClassRequest, IsSurvey, KiiClassRequest
 } from '@app/models';
 import { AssetsSelectors, GetAssetTypes, UpdateSelectedAssetTypes } from '@app/store/assets';
+import { GetAsutpClasses, GetGisClasses, GetIspdnClasses, GetKiiClasses } from '@app/store/classes';
 import {
-  GetAsutpClasses, GetAsutpConsequencesClasses, GetGisClasses, GetGisConsequencesClasses,
-  GetIspdnClasses, GetIspdnConsequencesClasses, GetKiiClasses, GetKiiConsequencesClasses
-} from '@app/store/classes';
+  GetAsutpConsequences, GetGisConsequences, GetIspdnConsequences, GetKiiConsequences
+} from '@app/store/consequences';
 import { SurveySelectors, UpdateGisSize, UpdateKiiSpecification } from '@app/store/survey';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
@@ -154,7 +154,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
 
     this.store.dispatch([
       new GetIspdnClasses(params),
-      new GetIspdnConsequencesClasses(params),
+      new GetIspdnConsequences(params),
     ]);
   }
 
@@ -173,7 +173,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
 
     this.store.dispatch([
       new GetGisClasses(params),
-      new GetGisConsequencesClasses(params),
+      new GetGisConsequences(params),
     ]);
   }
 
@@ -189,7 +189,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
 
     this.store.dispatch([
       new GetAsutpClasses(params),
-      new GetAsutpConsequencesClasses(params),
+      new GetAsutpConsequences(params),
     ]);
   }
 
@@ -208,7 +208,7 @@ export class SurveyComponent implements OnInit, OnDestroy {
 
     this.store.dispatch([
       new GetKiiClasses(params),
-      new GetKiiConsequencesClasses(params),
+      new GetKiiConsequences(params),
     ]);
   }
 }
