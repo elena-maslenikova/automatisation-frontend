@@ -10,6 +10,8 @@
   <mat-label>Название ИС</mat-label>
   <input matInput [(ngModel)]="isName">
 </mat-form-field>
-<div class="button-next">
-  <button mat-flat-button color="primary" [disabled]="!isName" (click)="buildReport()">Сформировать отчет</button>
+<div class="button-next text-center">
+  <button mat-flat-button class="big-button" color="primary" [disabled]="!isName" (click)="buildReport()">
+    Сформировать отчет
+  </button>
 </div>

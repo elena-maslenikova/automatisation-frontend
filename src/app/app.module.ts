@@ -28,6 +28,7 @@ import { AssetsComponent } from './components/assets/assets.component';
 import { ConsequencesComponent } from './components/consequences/consequences.component';
 import { ConsequencesState } from './store/consequences';
 import { ReportComponent } from './components/report/report.component';
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ReportComponent } from './components/report/report.component';
     KiiHelpSurveyComponent,
     AssetsComponent,
     ConsequencesComponent,
-    ReportComponent
+    ReportComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

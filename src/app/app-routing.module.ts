@@ -4,6 +4,7 @@ import { AppLayoutComponent } from './components/app-layout/app-layout.component
 import { AssetsComponent } from './components/assets/assets.component';
 import { ConsequencesComponent } from './components/consequences/consequences.component';
 import { HelpSurveyComponent } from './components/help-survey/help-survey.component';
+import { InfoComponent } from './components/info/info.component';
 import { ReportComponent } from './components/report/report.component';
 import { SurveyComponent } from './components/survey/survey.component';
 
@@ -11,12 +12,16 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'survey'
+    redirectTo: 'info'
   },
   {
     path: '',
     component: AppLayoutComponent,
     children: [
+      {
+        path: 'info',
+        component: InfoComponent,
+      },
       {
         path: 'survey',
         component: SurveyComponent

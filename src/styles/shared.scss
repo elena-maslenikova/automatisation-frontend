@@ -31,12 +31,22 @@ h3:first-child {
   flex: 1 0 0%;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .flex-center {
   display: flex;
   align-items: center;
 }
 .justify-between {
   justify-content: space-between;
+}
+
+.mat-flat-button.big-button {
+  font-size: 20px;
+  line-height: 1.25;
+  padding: 12px 24px;
 }
 
 //Material override
