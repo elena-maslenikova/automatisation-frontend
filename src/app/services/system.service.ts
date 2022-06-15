@@ -13,11 +13,14 @@ export class SystemService {
     private httpClient: HttpClient
   ) { }
 
-  createSystem(params: SystemRequest): Observable<System> {
-    return this.httpClient.post<System>(`${environment.api}/systems`, { params })
+  createSystem(body: SystemRequest): Observable<System> {
+    return this.httpClient.post<System>(`${environment.api}/systems/`, body);
   }
 
-  buildReport(id: number): Observable<any> {
-    return this.httpClient.get(`${environment.api}/systems/${id}/build_report`);
+  buildReport(id: number): Observable<Blob> {
+    return this.httpClient.get(
+      `${environment.api}/systems/${id}/build_report/`,
+      { responseType: 'blob' }
+    );
   }
 }
