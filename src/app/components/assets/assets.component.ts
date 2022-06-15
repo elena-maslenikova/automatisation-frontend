@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Asset, AssetType } from '@app/models';
+import { Asset } from '@app/models';
 import { AssetsSelectors, GetAssets, UpdateSelectedAssets } from '@app/store/assets';
 import { Select, Store } from '@ngxs/store';
 import { combineLatest, Observable, Subscription } from 'rxjs';

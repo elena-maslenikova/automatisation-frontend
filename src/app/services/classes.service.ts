@@ -16,17 +16,17 @@ export class ClassesService {
   ) { }
 
   getClassesIspdn(params: any): Observable<PaginatedResponse<IspdnClass>> {
-    return this.http.get<PaginatedResponse<IspdnClass>>(`${this.api}/ispdn`, { params });
+    return this.http.get<PaginatedResponse<IspdnClass>>(`${this.api}/ispdn/`, { params });
   }
   getClassesGis(params: any): Observable<PaginatedResponse<GisClass>> {
-    return this.http.get<PaginatedResponse<GisClass>>(`${this.api}/gis`, { params });
+    return this.http.get<PaginatedResponse<GisClass>>(`${this.api}/gis/`, { params });
   }
 
   getClassesAsutp(params: any): Observable<PaginatedResponse<AsutpClass>> {
-    return this.http.get<PaginatedResponse<AsutpClass>>(`${this.api}/asutp`, { params });
+    return this.http.get<PaginatedResponse<AsutpClass>>(`${this.api}/asutp/`, { params });
   }
 
   getClassesKii(params: any): Observable<PaginatedResponse<KiiClass>> {
-    return this.http.get<PaginatedResponse<KiiClass>>(`${this.api}/kii`, { params });
+    return this.http.get<PaginatedResponse<KiiClass>>(`${this.api}/kii/`, { params });
   }
 }

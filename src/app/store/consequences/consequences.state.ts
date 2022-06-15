@@ -35,11 +35,11 @@ export class ConsequencesState {
   @Action(GetConsequences)
   getConsequences(
     ctx: StateContext<ConsequencesStateModel>,
-  ): Observable<PaginatedResponse<Consequence>> {
+  ): Observable<Consequence[]> {
     return this.consequencesService.getConsequences()
       .pipe(
-        tap((result: PaginatedResponse<Consequence>) => {
-          ctx.patchState({ consequenceList: result.results });
+        tap((result: Consequence[]) => {
+          ctx.patchState({ consequenceList: result });
         }),
         catchError((err: HttpErrorResponse) => {
           // this.store.dispatch(new SetSnackBarMessage(err.error?.text || "Creating key failed"));
