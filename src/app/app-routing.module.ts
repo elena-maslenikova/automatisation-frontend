@@ -7,6 +7,7 @@ import { HelpSurveyComponent } from './components/help-survey/help-survey.compon
 import { InfoComponent } from './components/info/info.component';
 import { ReportComponent } from './components/report/report.component';
 import { SurveyComponent } from './components/survey/survey.component';
+import { TemplatesComponent } from './components/templates/templates.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'info',
         component: InfoComponent,
+      },
+      {
+        path: 'templates',
+        component: TemplatesComponent,
       },
       {
         path: 'survey',

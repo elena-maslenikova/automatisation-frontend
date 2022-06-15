@@ -1,0 +1,36 @@
+<div class="flex-center justify-between">
+  <a mat-button color="primary" routerLink="/info">
+    <mat-icon>arrow_back</mat-icon>
+    Информация
+  </a>
+  <h2>Шаблоны</h2>
+  <a mat-button color="primary" routerLink="/survey">
+    Входные данные
+    <mat-icon>arrow_forward</mat-icon>
+  </a>
+</div>
+<div class="description">
+  Ниже представлены варианты типовых предприятий, с моделями угроз которых вы можете ознакомиться
+</div>
+<div *ngIf="templates" class="container">
+  <div *ngFor="let template of templates" class="template-container">
+    <div class="template" (click)="getReport(template.id)">
+      <h3>{{template.name}}</h3>
+      <div>
+        <strong>Тип ИС: </strong>
+        <span *ngIf="template.ispdn_classes?.length">ИСПДн; </span>
+        <span *ngIf="template.gis_classes?.length">ГИС; </span>
+        <span *ngIf="template.asutp_classes?.length">АСУТП; </span>
+        <span *ngIf="template.kii_classes?.length">объект КИИ; </span>
+      </div>
+      <div>
+        <strong>Негативные последствия:</strong>
+        {{template.assets.length}}
+      </div>
+      <div>
+        <strong>Объекты:</strong>
+        {{template.negative_consequences.length}}
+      </div>
+    </div>
+  </div>
+</div>

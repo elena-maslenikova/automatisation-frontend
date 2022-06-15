@@ -29,6 +29,7 @@ import { ConsequencesComponent } from './components/consequences/consequences.co
 import { ConsequencesState } from './store/consequences';
 import { ReportComponent } from './components/report/report.component';
 import { InfoComponent } from './components/info/info.component';
+import { TemplatesComponent } from './components/templates/templates.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { InfoComponent } from './components/info/info.component';
     AssetsComponent,
     ConsequencesComponent,
     ReportComponent,
-    InfoComponent
+    InfoComponent,
+    TemplatesComponent
   ],
   imports: [
     BrowserModule,
