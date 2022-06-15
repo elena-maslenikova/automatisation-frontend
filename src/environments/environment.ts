@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   api: 'http://185.209.31.44/api',
+  token: '',
 };
 
 /*
