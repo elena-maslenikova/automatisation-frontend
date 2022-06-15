@@ -27,8 +27,7 @@ export class ReportComponent implements OnDestroy {
   buildReport() {
     const params: SystemRequest = {
       name: this.isName,
-      // assets: this.store.selectSnapshot(AssetsSelectors.selectedAssetsIds),
-      assets: [1, 2, 3],
+      assets: this.store.selectSnapshot(AssetsSelectors.selectedAssetsIds),
       negative_consequences: this.store.selectSnapshot(ConsequencesSelectors.selectedConsequencesIds)
     };
     const ispdn_classes = this.store.selectSnapshot(ClassesSelectors.ispdnClasses);

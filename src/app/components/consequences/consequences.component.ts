@@ -16,8 +16,9 @@ export class ConsequencesComponent implements OnInit, OnDestroy {
   @Select(ConsequencesSelectors.gisConsequencesIds) gisConsequencesIds$: Observable<Consequence[]>;
   @Select(ConsequencesSelectors.asutpConsequencesIds) asutpConsequencesIds$: Observable<Consequence[]>;
   @Select(ConsequencesSelectors.kiiConsequencesIds) kiiConsequencesIds$: Observable<Consequence[]>;
+  @Select(ConsequencesSelectors.selectedConsequencesIds) selectedConsequencesIds$: Observable<number[]>;
 
-  selectedConsequences: Consequence[];
+  selectedConsequences: number[];
   public displayedColumns: string[] = [
     'select',
     'fullName',
@@ -28,7 +29,6 @@ export class ConsequencesComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store,
-    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,29 +47,34 @@ export class ConsequencesComponent implements OnInit, OnDestroy {
         const asutpConsequencesIds = this.store.selectSnapshot(ConsequencesSelectors.asutpConsequencesIds);
         const kiiConsequencesIds = this.store.selectSnapshot(ConsequencesSelectors.kiiConsequencesIds);
 
-        this.selectedConsequences = consequenceList?.filter(item => ispdnConsequencesIds?.includes(item.id) ||
+        const selectedConsequences = consequenceList?.filter(item => ispdnConsequencesIds?.includes(item.id) ||
           gisConsequencesIds?.includes(item.id) || asutpConsequencesIds?.includes(item.id)
           || kiiConsequencesIds?.includes(item.id));
+        this.store.dispatch(new UpdateSelectedConsequences(selectedConsequences.map(item => item.id)));
       })
     );
+
+    this.subsciptions.add(
+      this.selectedConsequencesIds$.subscribe((consequences) => {
+        if (!consequences) { return; }
+        this.selectedConsequences = consequences;
+      })
+    )
   }
 
   isSelected(id: number): boolean {
-    return !!this.selectedConsequences?.find(item => item.id === id);
+    return !!this.selectedConsequences?.find(item => item === id);
   }
 
   toggle(consequence: Consequence): void {
-    const index = this.selectedConsequences.findIndex(item => item.id === consequence.id);
+    const index = this.selectedConsequences.findIndex(item => item === consequence.id);
     if (index !== -1) {
       this.selectedConsequences.splice(index, 1);
     } else {
-      this.selectedConsequences.push(consequence);
+      this.selectedConsequences.push(consequence.id);
     }
-  }
 
-  updateSelectedConsequences() {
-    this.store.dispatch(new UpdateSelectedConsequences(this.selectedConsequences.map(item => item.id)));
-    this.router.navigate(['/assets']);
+    this.store.dispatch(new UpdateSelectedConsequences(this.selectedConsequences));
   }
 
   ngOnDestroy(): void {

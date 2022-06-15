@@ -4,10 +4,10 @@
     Входные данные
   </a>
   <h2>Определение негативных последствий</h2>
-  <button mat-button color="primary" (click)="updateSelectedConsequences()">
+  <a mat-button color="primary" routerLink="/assets">
     Объекты воздействия
     <mat-icon>arrow_forward</mat-icon>
-  </button>
+  </a>
 </div>
 <mat-table [dataSource]="consequenceList$ | async">
   <ng-container matColumnDef="select">

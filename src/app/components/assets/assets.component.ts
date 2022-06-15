@@ -3,7 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Asset } from '@app/models';
 import { AssetsSelectors, GetAssets, UpdateSelectedAssets } from '@app/store/assets';
 import { Select, Store } from '@ngxs/store';
-import { combineLatest, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-assets',
@@ -14,13 +14,11 @@ export class AssetsComponent implements OnInit, OnDestroy {
   @Select(AssetsSelectors.selectedAssetTypesIds) selectedAssetTypesIds$: Observable<number[]>;
   @Select(AssetsSelectors.assets) assets$: Observable<Asset[]>;
   @Select(AssetsSelectors.assetsCount) assetsCount$: Observable<number>;
-  @Select(AssetsSelectors.selectedAssetsIds) selectedAssetsIds$: Observable<number[]>;
 
-  selectedAssets: Asset[];
   displayedColumns: string[] = [
+    'select',
     'name',
     'typeName',
-    'delete',
   ];
 
   private subscriptions: Subscription = new Subscription();
@@ -37,10 +35,6 @@ export class AssetsComponent implements OnInit, OnDestroy {
         this.store.dispatch(new GetAssets({ asset_type__in: types.toString() }));
       })
     );
-
-    combineLatest([this.assets$, this.selectedAssetsIds$]).subscribe(([assets, ids]) => {
-      this.selectedAssets = assets?.filter(asset => ids?.includes(asset.id));
-    })
   }
 
   getPage(event: PageEvent) {
@@ -50,15 +44,22 @@ export class AssetsComponent implements OnInit, OnDestroy {
     this.store.dispatch(new GetAssets({ asset_type__in: assetTypes.toString(), page }));
   }
 
-  deleteAsset(id: number) {
-    const selectedAssetsIds = this.store.selectSnapshot(AssetsSelectors.selectedAssetsIds) ?
-      [...this.store.selectSnapshot(AssetsSelectors.selectedAssetsIds)] : [];
+  isSelected(id: number): boolean {
+    const selectedAssets = this.store.selectSnapshot(AssetsSelectors.selectedAssetsIds);
+    return !!selectedAssets?.find(item => item === id);
+  }
 
-    const index = selectedAssetsIds.findIndex(assetId => assetId === id);
+  toggle(asset: Asset): void {
+    const selectedAssets = this.store.selectSnapshot(AssetsSelectors.selectedAssetsIds) ?
+      [...this.store.selectSnapshot(AssetsSelectors.selectedAssetsIds)] : [];
+    const index = selectedAssets.findIndex(item => item === asset.id);
     if (index !== -1) {
-      selectedAssetsIds.splice(index, 1);
-      this.store.dispatch(new UpdateSelectedAssets(selectedAssetsIds));
+      selectedAssets.splice(index, 1);
+    } else {
+      selectedAssets.push(asset.id);
     }
+
+    this.store.dispatch(new UpdateSelectedAssets(selectedAssets));
   }
 
   ngOnDestroy(): void {
