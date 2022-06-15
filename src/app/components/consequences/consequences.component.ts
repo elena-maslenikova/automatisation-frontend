@@ -50,7 +50,7 @@ export class ConsequencesComponent implements OnInit, OnDestroy {
         const selectedConsequences = consequenceList?.filter(item => ispdnConsequencesIds?.includes(item.id) ||
           gisConsequencesIds?.includes(item.id) || asutpConsequencesIds?.includes(item.id)
           || kiiConsequencesIds?.includes(item.id));
-        this.store.dispatch(new UpdateSelectedConsequences(selectedConsequences.map(item => item.id)));
+        this.store.dispatch(new UpdateSelectedConsequences(selectedConsequences?.map(item => item.id)));
       })
     );
 
